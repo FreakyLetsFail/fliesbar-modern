@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fliesenleger Uwe Ewers | Meisterbetrieb Essen-Kettwig</title>
+    <meta name="description" content="Fliesenlegermeister Uwe Ewers aus Essen-Kettwig. Fliesen, Mosaike, Naturstein, Bäder, Terrassen & mehr. Über 35 Jahre Erfahrung.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --accent: #c8956c;
+            --accent-light: #e8c4a8;
+            --bg: #fafaf8;
+            --bg-alt: #f0eeea;
+            --text: #2d2d2d;
+            --text-light: #6b6b6b;
+            --white: #ffffff;
+            --shadow: 0 4px 30px rgba(0,0,0,0.08);
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.12);
+            --radius: 16px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ── NAV ── */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: var(--transition);
+            background: transparent;
+        }
+
+        .nav.scrolled {
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 1px 20px rgba(0,0,0,0.06);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .nav.scrolled .nav-logo {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav.scrolled .nav-links a {
+            color: var(--text);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            transition: var(--transition);
+        }
+
+        .nav.scrolled .hamburger span {
+            background: var(--primary);
+        }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(200,149,108,0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(200,149,108,0.08) 0%, transparent 40%);
+        }
+
+        .hero-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.04;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            padding: 2rem;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(200,149,108,0.15);
+            border: 1px solid rgba(200,149,108,0.3);
+            border-radius: 50px;
+            color: var(--accent-light);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            color: var(--white);
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.7);
+            max-width: 550px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: #b8854f;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(200,149,108,0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* ── SECTIONS ── */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .section-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: var(--primary);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .section-desc {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        /* ── ABOUT ── */
+        .about {
+            background: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image-box {
+            width: 100%;
+            aspect-ratio: 4/5;
+            background: linear-gradient(135deg, var(--bg-alt), #e0ddd6);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image-box::before {
+            content: '🏗️';
+            font-size: 5rem;
+        }
+
+        .about-year {
+            position: absolute;
+            bottom: -1rem;
+            right: -1rem;
+            background: var(--accent);
+            color: var(--white);
+            padding: 1.2rem 1.8rem;
+            border-radius: var(--radius);
+            font-size: 0.85rem;
+            font-weight: 700;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-year strong {
+            display: block;
+            font-size: 2rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .about-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .about-text p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 1.2rem;
+            background: var(--bg);
+            border-radius: 12px;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 0.25rem;
+        }
+
+        /* ── SERVICES ── */
+        .services {
+            background: var(--bg);
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .services-header .section-desc {
+            margin: 0.5rem auto 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2.5rem 2rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(200,149,108,0.2);
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--accent), #d4a574);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* ── QUALITY ── */
+        .quality {
+            background: var(--primary);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quality::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 80% 50%, rgba(200,149,108,0.1) 0%, transparent 60%);
+        }
+
+        .quality .section-inner {
+            position: relative;
+            z-index: 2;
+        }
+
+        .quality .section-label {
+            color: var(--accent-light);
+        }
+
+        .quality .section-title {
+            color: var(--white);
+        }
+
+        .quality-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 2.5rem;
+        }
+
+        .quality-text p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .quality-features {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .quality-feature {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: var(--transition);
+        }
+
+        .quality-feature:hover {
+            background: rgba(255,255,255,0.08);
+        }
+
+        .quality-feature-icon {
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
+            background: rgba(200,149,108,0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .quality-feature h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .quality-feature p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.5);
+            margin: 0;
+        }
+
+        /* ── PARTNER ── */
+        .partner {
+            background: var(--white);
+        }
+
+        .partner-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .partner-header .section-desc {
+            margin: 0.5rem auto 0;
+        }
+
+        .partner-logos {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .partner-logo {
+            padding: 1.5rem 2.5rem;
+            background: var(--bg);
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .partner-logo:hover {
+            box-shadow: var(--shadow);
+            color: var(--accent);
+        }
+
+        /* ── CONTACT ── */
+        .contact {
+            background: var(--bg);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .contact-item-icon {
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            background: var(--white);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-item h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .contact-item p,
+        .contact-item a {
+            font-size: 1.05rem;
+            color: var(--primary);
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent);
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .contact-form h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 0.4rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid var(--bg-alt);
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            color: var(--text);
+            transition: var(--transition);
+            background: var(--bg);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: var(--white);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent);
+            color: var(--white);
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .form-submit:hover {
+            background: #b8854f;
+        }
+
+        /* ── MAP ── */
+        .map-section {
+            padding: 0;
+        }
+
+        .map-section iframe {
+            width: 100%;
+            height: 350px;
+            border: none;
+            display: block;
+            filter: grayscale(0.3);
+        }
+
+        /* ── FOOTER ── */
+        .footer {
+            background: var(--primary);
+            color: rgba(255,255,255,0.6);
+            padding: 3rem 2rem;
+        }
+
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ── ANIMATIONS ── */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── MOBILE ── */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(26,26,46,0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links.open a {
+                color: var(--white) !important;
+                font-size: 1.3rem;
+            }
+
+            .hamburger {
+                display: flex;
+                z-index: 1001;
+            }
+
+            .about-grid,
+            .quality-content,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-stats {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* ── IMPRESSUM MODAL ── */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 3rem;
+            max-width: 550px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .modal h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .modal p, .modal li {
+            color: var(--text-light);
+            margin-bottom: 0.75rem;
+            line-height: 1.7;
+        }
+
+        .modal strong {
+            color: var(--text);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 36px;
+            height: 36px;
+            background: var(--bg);
+            border: none;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            background: var(--bg-alt);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">Uwe Ewers</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" onclick="closeMenu()">Home</a></li>
+                <li><a href="#ueber" onclick="closeMenu()">Über uns</a></li>
+                <li><a href="#leistungen" onclick="closeMenu()">Leistungen</a></li>
+                <li><a href="#qualitaet" onclick="closeMenu()">Qualität</a></li>
+                <li><a href="#partner" onclick="closeMenu()">Partner</a></li>
+                <li><a href="#kontakt" onclick="closeMenu()">Kontakt</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menü">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-pattern"></div>
+        <div class="hero-content">
+            <div class="hero-badge">Meisterbetrieb seit 1989</div>
+            <h1>Fliesen, Platten & <span>Mosaike</span> aus Meisterhand</h1>
+            <p>Ihr Fliesenlegermeister aus Essen-Kettwig. Über 35 Jahre Erfahrung in individueller Gestaltung von Bädern, Terrassen und Wohnbereichen.</p>
+            <div class="hero-buttons">
+                <a href="#kontakt" class="btn btn-primary">📞 Jetzt Kontakt aufnehmen</a>
+                <a href="#leistungen" class="btn btn-outline">Unsere Leistungen →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="ueber">
+        <div class="section-inner">
+            <div class="section-label">Über uns</div>
+            <div class="section-title">Handwerk mit Leidenschaft</div>
+            <div class="about-grid fade-in">
+                <div class="about-image">
+                    <div class="about-image-box"></div>
+                    <div class="about-year">
+                        Seit<br>
+                        <strong>1989</strong>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h3>Hallo, mein Name ist Uwe Ewers</h3>
+                    <p>Am 09.06.1988 habe ich an der HWK zu Köln meine Prüfung zum Fliesen-, Platten- und Mosaiklegemeister abgelegt. Meinen Betrieb habe ich am 01.07.1989 in Essen gegründet. Seit dem 01.09.1990 bin ich in der Gartenstadt Kettwig ansässig.</p>
+                    <p>Mein Team und ich sind Spezialisten, wenn es um die individuelle Gestaltung von Bädern und Wohnbereichen im privaten Wohnungsbau geht. Kompetent und qualifiziert führen wir Ihre Projekte aus.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <div class="stat-number">35+</div>
+                            <div class="stat-label">Jahre Erfahrung</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">1989</div>
+                            <div class="stat-label">Gegründet</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">HWK</div>
+                            <div class="stat-label">Meisterprüfung</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="leistungen">
+        <div class="section-inner">
+            <div class="services-header">
+                <div class="section-label">Leistungen</div>
+                <div class="section-title">Was wir für Sie tun</div>
+                <div class="section-desc">Individuell und ganz nach Ihren Wünschen – von der Beratung über den Entwurf bis zur Ausführung.</div>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">🛁</div>
+                    <h3>Bäder & Komplettbäder</h3>
+                    <p>Heutzutage wird das Bad als Wohnraum angesehen. Wir gestalten Ihr Traumbad – ob Naturstein, Mosaik oder moderne Fliesen. Auch alten- und behindertengerechte Bäder.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🏊</div>
+                    <h3>Schwimmbäder</h3>
+                    <p>Ob privates oder gewerbliches Schwimmbad – die Qualität muss stimmen. Von unseren Partnern beziehen wir hochwertige Produkte für Ihr Schwimmbadprojekt.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">☀️</div>
+                    <h3>Terrassen & Balkone</h3>
+                    <p>Ihr individueller Sonnenplatz – ob Naturstein oder Mosaik, wir beraten Sie gerne und kümmern uns um die gesamte Umsetzung Ihrer Terrassen- und Balkongestaltung.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🪜</div>
+                    <h3>Treppen & Böden</h3>
+                    <p>Wir bereiten Ihren Boden nach Ihren Vorstellungen neu auf. Einzelne Stufen oder ganzes Treppenhaus – privat oder gewerblich, wir sorgen für festen Stand.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🎨</div>
+                    <h3>Glasmosaik</h3>
+                    <p>Künstlerische Glasmosaike nach Ihren Wünschen. Hochwertige Produkte von Bisazza – Farbverläufe, Dekore und Bordüren für den besonderen Touch.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🪨</div>
+                    <h3>Natursteinverarbeitung</h3>
+                    <p>Natürliche Steine für ein edles Ambiente. Professionelle Verarbeitung und Verlegung von Naturstein in allen Wohnbereichen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUALITY -->
+    <section class="quality" id="qualitaet">
+        <div class="section-inner">
+            <div class="section-label">Qualität</div>
+            <div class="section-title">Wir achten auf gute Qualität</div>
+            <div class="quality-content fade-in">
+                <div class="quality-text">
+                    <p>Seit über 35 Jahren arbeiten wir nicht nur zuverlässig und schnell, sondern achten besonders auf die Qualität unserer Arbeit und die unserer verwendeten Produkte.</p>
+                    <p>Damit wir Ihnen als Kunden unseren einwandfreien Service garantieren können, beziehen wir unsere Produkte von unseren langjährigen Partnern. So erhalten wir beispielsweise unsere Mosaiksteine von Bisazza oder unsere Natursteine von Rossittis.</p>
+                    <p>Neben der ausgezeichneten Arbeitseinstellung, pünktlich und zuverlässig zu sein, greifen wir auf technisch aktuelles Wissen und eine eingespielte Teamdynamik zurück.</p>
+                </div>
+                <div class="quality-features">
+                    <div class="quality-feature">
+                        <div class="quality-feature-icon">✓</div>
+                        <div>
+                            <h4>Pünktlich & Zuverlässig</h4>
+                            <p>Termintreue und Verlässlichkeit sind für uns selbstverständlich</p>
+                        </div>
+                    </div>
+                    <div class="quality-feature">
+                        <div class="quality-feature-icon">✓</div>
+                        <div>
+                            <h4>Hochwertige Materialien</h4>
+                            <p>Ausschließlich Produkte von bewährten Partnern wie Bisazza und Rossittis</p>
+                        </div>
+                    </div>
+                    <div class="quality-feature">
+                        <div class="quality-feature-icon">✓</div>
+                        <div>
+                            <h4>Individuelle Beratung</h4>
+                            <p>Von der Beratung über den Entwurf bis zur Ausführung aus einer Hand</p>
+                        </div>
+                    </div>
+                    <div class="quality-feature">
+                        <div class="quality-feature-icon">✓</div>
+                        <div>
+                            <h4>Meisterbetrieb</h4>
+                            <p>Geprüfte Qualität durch Meisterprüfung an der HWK zu Köln</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PARTNER -->
+    <section class="partner" id="partner">
+        <div class="section-inner">
+            <div class="partner-header">
+                <div class="section-label">Partner</div>
+                <div class="section-title">Unsere Partner des Vertrauens</div>
+                <div class="section-desc">Damit wir Ihnen stets herausragende Qualität bieten können, beziehen wir unsere Produkte ausschließlich von bewährten Partnern.</div>
+            </div>
+            <div class="partner-logos">
+                <div class="partner-logo">Bisazza</div>
+                <div class="partner-logo">Rossittis</div>
+                <div class="partner-logo">& weitere Partner</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="kontakt">
+        <div class="section-inner">
+            <div class="section-label">Kontakt</div>
+            <div class="section-title">Sprechen Sie uns an</div>
+            <div class="section-desc">Wir freuen uns auf Ihren Anruf oder Ihre Nachricht.</div>
+            <div class="contact-grid fade-in">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📍</div>
+                        <div>
+                            <h4>Adresse</h4>
+                            <p>Auf Der Rötsch 18<br>45219 Essen (Kettwig)</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📞</div>
+                        <div>
+                            <h4>Telefon</h4>
+                            <a href="tel:020543572">02054 3572</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📱</div>
+                        <div>
+                            <h4>Mobil</h4>
+                            <a href="tel:01714346525">0171 4346525</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">✉️</div>
+                        <div>
+                            <h4>E-Mail</h4>
+                            <a href="mailto:info@fliesbar.de">info@fliesbar.de</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Kontaktformular</h3>
+                    <form onsubmit="handleSubmit(event)">
+                        <div class="form-group">
+                            <label>Name *</label>
+                            <input type="text" required placeholder="Ihr Name">
+                        </div>
+                        <div class="form-group">
+                            <label>E-Mail *</label>
+                            <input type="email" required placeholder="ihre@email.de">
+                        </div>
+                        <div class="form-group">
+                            <label>Telefon</label>
+                            <input type="tel" placeholder="Ihre Telefonnummer">
+                        </div>
+                        <div class="form-group">
+                            <label>Nachricht *</label>
+                            <textarea required placeholder="Wie können wir Ihnen helfen?"></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Nachricht senden</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAP -->
+    <div class="map-section">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2494.8!2d6.937!3d51.3568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b8c9b0e14b3e9f%3A0x5c0!2sAuf+der+R%C3%B6tsch+18%2C+45219+Essen!5e0!3m2!1sde!2sde!4v1" allowfullscreen loading="lazy" title="Standort"></iframe>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-logo">Fliesenlegermeister Uwe Ewers</div>
+            <div class="footer-links">
+                <a href="#" onclick="openModal(event)">Impressum</a>
+                <a href="tel:020543572">02054 3572</a>
+                <a href="mailto:info@fliesbar.de">info@fliesbar.de</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- IMPRESSUM MODAL -->
+    <div class="modal-overlay" id="impressumModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <h2>Impressum</h2>
+            <p><strong>Fliesenlegermeister Uwe Ewers</strong></p>
+            <p><strong>Rechtsform:</strong> Einzelunternehmen</p>
+            <p><strong>Inhaber:</strong> Uwe Ewers</p>
+            <p><strong>Adresse:</strong> Auf Der Rötsch 18, 45219 Essen</p>
+            <p><strong>Telefon:</strong> 02054 3572</p>
+            <p><strong>E-Mail:</strong> info@fliesbar.de</p>
+            <p><strong>Umsatzsteuer-ID:</strong> DE 119706493</p>
+            <p><strong>Wirtschafts-ID:</strong> DE 119706493-00001</p>
+            <br>
+            <p><strong>Haftungshinweis:</strong> Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
+            <p>Wir sind nicht bereit oder verpflichtet, an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+        </div>
+    </div>
+
+    <script>
+        // NAV SCROLL
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // MOBILE MENU
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+        function closeMenu() {
+            document.getElementById('navLinks').classList.remove('open');
+        }
+
+        // FADE IN
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // MODAL
+        function openModal(e) {
+            e.preventDefault();
+            document.getElementById('impressumModal').classList.add('active');
+        }
+        function closeModal() {
+            document.getElementById('impressumModal').classList.remove('active');
+        }
+        document.getElementById('impressumModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) closeModal();
+        });
+
+        // FORM (visual only)
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('Vielen Dank für Ihre Nachricht! Wir melden uns zeitnah bei Ihnen.');
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>
